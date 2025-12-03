@@ -18,6 +18,8 @@ List<(Func<object> action, int day, int part)> steps = [
 	(() => Day01.Part2(Resources.Day01.Trim().Split(Environment.NewLine)), 1, 2),
 	(() => Day02.Part1(Resources.Day02.Trim()), 2, 1),
 	(() => Day02.Part2(Resources.Day02.Trim()), 2, 2),
+	(() => Day03.Part1(Resources.Day03.Trim().Split(Environment.NewLine)), 3, 1),
+	(() => Day03.Part2(Resources.Day03.Trim().Split(Environment.NewLine)), 3, 2),
 ];
 
 steps.ForEach(z => TimeAndReportResult(z.action, z.day, z.part));
