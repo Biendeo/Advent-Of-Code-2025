@@ -1,6 +1,5 @@
 namespace AdventOfCode2025.Lib;
 
-using System.Collections.Immutable;
 using Point = (int X, int Y);
 
 public static class Day04 {
@@ -44,7 +43,7 @@ public static class Day04 {
 		int maxY = l.Count;
 		IEnumerable<Point> rollsToRemove;
 		int totalRollsRemoved = 0;
-		while ((rollsToRemove = GetGridRange(0, 0, maxX, maxY).Where(p => l[p.Y][p.X] == '@').Where(p => GetNeighbors(p, 0, 0, maxX, maxY).Count(n => l[n.Y][n.X] == '@') < 4).ToImmutableArray()).Any()) {
+		while ((rollsToRemove = [.. GetGridRange(0, 0, maxX, maxY).Where(p => l[p.Y][p.X] == '@').Where(p => GetNeighbors(p, 0, 0, maxX, maxY).Count(n => l[n.Y][n.X] == '@') < 4)]).Any()) {
 			foreach (Point p in rollsToRemove) {
 				l[p.Y] = l[p.Y][..p.X] + '.' + l[p.Y][(p.X + 1)..];
 				++totalRollsRemoved;
