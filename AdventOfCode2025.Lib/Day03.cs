@@ -2,39 +2,17 @@ namespace AdventOfCode2025.Lib;
 
 public static class Day03 {
 	public static long GetHighestSubstring(string s, int n) {
-		string highestValue = string.Join("", Enumerable.Repeat('0', n));
-		Stack<int> indicies = new(0);
-		indicies.Push(0);
-		while (indicies.Count != 1 || indicies.Peek() != s.Length) {
-			string currentStack = string.Join("", indicies.Reverse().Select(i => s[i]));
-			int comparison = currentStack.CompareTo(highestValue[..indicies.Count]);
-			if (indicies.Count == n && comparison > 0) {
-				highestValue = currentStack;
+		Stack<char> digits = new(n);
+		for (int i = 0; i < s.Length; ++i) {
+			char c = s[i];
+			while (digits.Count > 0 && n - digits.Count < s.Length - i && digits.Peek() < c) {
+				digits.Pop();
 			}
-			if (indicies.Peek() == s.Length - 1) {
-				if (indicies.Count == 1) {
-					indicies.Push(indicies.Pop() + 1);
-				} else {
-					indicies.Pop();
-					indicies.Push(indicies.Pop() + 1);
-				}
-			} else if (indicies.Count == n) {
-				indicies.Push(indicies.Pop() + 1);
-			} else if (comparison < 0) {
-				if (indicies.Count == 1) {
-					indicies.Push(indicies.Pop() + 1);
-				} else if (indicies.Peek() == s.Length - 1) {
-					indicies.Pop();
-					indicies.Push(indicies.Pop() + 1);
-				} else {
-					indicies.Push(indicies.Pop() + 1);
-				}
-			} else {
-				indicies.Push(indicies.Peek() + 1);
+			if (digits.Count < n) {
+				digits.Push(c);
 			}
 		}
-		Console.WriteLine(highestValue);
-		return long.Parse(highestValue);
+		return long.Parse(new([.. digits.Reverse()]));
 	}
 
 	public static long Part1(IEnumerable<string> input) {
