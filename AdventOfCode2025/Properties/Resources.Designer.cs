@@ -233,5 +233,14 @@ namespace AdventOfCode2025.Properties {
                 return ResourceManager.GetString("Day05", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 68  17 77   451 2997 658 138 51 261   75 61 1218 212 238  35 56  877 211 967  82  98  2 7    1 48 137 643   25 489 62 699 782   45 29 67  957 584 5637 3    9 96  45 29 8      6   4   9   2 49 39 779 729 16  123 24 75  69  18  2199 89 195 296 73   6  274 1   93 44 17 37  897 32 6953 48 2736 62 6   7  97 63 81  525   1  22 13  9  68 4624 67 5547 984 764 392   6 32 319 8567 7487 8762 52 2    181 19  771 2333   9 682    7 988 81 511 552 75 6995   7 47 75  2 419 532    7 63  825 189 89  5  16 49 577 767 21 38 6  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Day06 {
+            get {
+                return ResourceManager.GetString("Day06", resourceCulture);
+            }
+        }
     }
 }
